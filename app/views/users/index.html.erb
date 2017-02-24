@@ -1,0 +1,43 @@
+<h1>WELCOME TO CAROLINE'S WORLD! &#9786;</h1><br>
+<hr>
+<h3>Sign Up</h3>
+<p><%= flash[:errors] %></p>
+<div class ="form-group"><form action='/create' method='post'>
+    <input name="authenticity_token" value= "<%= form_authenticity_token %>" type="hidden">
+    <p><label for="name">Name:</label>
+    <input id="name" type="text" name="name" placeholder="Enter Name"></p>
+    <p><label for="alias">Alias:</label>
+    <input id="alias" type="text" name="alias" placeholder="Enter Alias"></p>
+    <p><label for="email">Email:</label>
+    <input id="email" type="email" name="email" placeholder="Enter email"></p>
+    <!-- <p><label for="birthday">Birthday:<input type="date" data-date-format="YYYY/MM/DD" name="birthday"></p> -->
+    <p><label for="password">Password:</label>
+    <input id="password" type="password" name="password" placeholder="Enter password"></p>
+    <p><label for="password_confirmation">Retype Password:</label>
+    <input id="password_confirmation" type="password" name="password_confirmation" placeholder="Retype your password"></p>
+
+
+
+    <button type="submit">Join us &#9829;</button>
+    </form>
+</div>
+<hr>
+<h3>Login</h3>
+<p><%= flash[:message] %></p>
+<div class ="form-group"><form action='/login' method='post'>
+    <input name="authenticity_token" value= "<%= form_authenticity_token %>" type="hidden">
+    <p><label for="email">Email:</label>
+    <input id="email" type="email" name="email" placeholder="Enter email"></p>
+    <p><label for="password">Password:</label>
+    <input id="password" type="password" name="password" placeholder="Enter password"></p>
+    <button type="submit">Hi &#9834;&#9836;</button>
+    </form>
+</div>
+
+
+    <!-- Dojo Location: <select id= "location" name="location">
+        <option value="sanjose">San Jose</option>
+        <option value="seattle">Seattle</option>
+    </select><br> -->
+    <!-- Comment (optional): <input id="comment" type='text' name='comment'>
+    <input id="submit" type='submit' value='sumbit'> -->

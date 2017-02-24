@@ -1,0 +1,61 @@
+<br>
+<h2> Hi, <%= @user.alias.capitalize %> </h2>
+<br>
+<h3>Post Something good.</h3>
+<p><%= flash[:notes] %></p>
+ <form action="/posts/update/<%= @user.id %>" method="post">
+   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+   <textarea name="content" rows="8" cols="80"></textarea><br>
+   <input type="submit" value="Share!" class="btn btn-default">
+ </form>
+ <h3>All the Messages</h3>
+     <div class='table-responsive'>
+         <table class='table'>
+             <tr>
+                 <td>Alias </td>
+                 <td>Message</td>
+                 <td>Like!</td>
+                 <td>Like?</td>
+                 <td>Delete</td>
+             </tr>
+             <% @posts.each do |post| %>
+             <tr>
+                 <td><a href="/info/<%= post.user_id %>"><%= post.user.alias.capitalize %></a> </td>
+                 <td><%= post.content %></td>
+                 <td><a href="/posts/<%= post.id %>"><%= post.likes.count %></a>people likes this.</td>
+                 <td>
+                     <% if @post_likes.exists?(:idea_id => post.id) == false %>
+                         <form action="/posts/like/<%= post.id %>" method="post">
+                             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                             <input type="submit" value="like" class="btn btn-default">
+                         </form>
+                     <% end %>
+                     <% if @post_likes.exists?(:idea_id => post.id) == true %>
+                         <form action="/posts/unlike/<%= post.id %>" method="post">
+                             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                             <input type="submit" value="unlike" class="btn btn-default">
+                         </form>
+                     <% end %>
+                 </td>
+                 <td>
+                     <% if post.user == @user %>
+                         <form action="/delete/<%= post.id %>" method="post">
+                         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                         <input type="submit" value="Delete" class="btn btn-default">
+                         </form>
+                     <% end %>
+                 </td>
+             </tr>
+             <% end %>
+         </table>
+     </div>
+
+
+
+            <a href="/info/<%= @user.id %>">Show your info</a>
+
+<br>
+<form action="/logout" method="post" role="form">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <button type="submit">Logout</button>
+</form>

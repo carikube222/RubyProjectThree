@@ -1,0 +1,26 @@
+
+<a href="/show"> Main page </a>
+<br>
+<form action="/logout" method="post" role="form">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <button type="submit">Logout</button>
+</form>
+<hr>
+<br><br>
+<h1>Welcome, <%= @user.name %> </h1>
+<hr>
+<h2>Your Name:<%= @user.name.capitalize %></h2>
+<h2>Your Alias: <%= @user.alias.capitalize %></h2>
+<h2>Your ID: <%= @user.id %></h2>
+<h2>Your Email: <%= @user.email %></h2>
+<hr>
+<h2>Total Number of Posts: <%= @post.count %></h2>
+<h2>Total Number of Likes: <%= @user.likes.count %></h2>
+
+<!-- <a href="/edit/<%= @user.id %>">Edit</a> |
+<a href="/show"> Main page </a>
+<br><br>
+<form action="/logout" method="post" role="form">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <button type="submit">Logout</button>
+</form> -->

@@ -1,0 +1,19 @@
+<br><br>
+<form action="/logout" method="post" role="form">
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <button type="submit">Logout</button>
+</form>
+<br>
+<a href="/info/<%= @user.id %>">Your Info Page</a> |
+<a href="/show">Main Page</a>
+<br><hr>
+
+<h4> Post:</h4>
+<h4>" <%= @post.content %> "</h4><br>
+
+<h4>People Who liked the post</h4>
+<div class="col-md-6">
+   <% @likes.each do |like| %>
+        <p>Name:<a href="/info/<%= like.id %>"> <%= like.name %></a> | Alias: <%= like.alias %> </p>
+   <% end %>
+</div>
